@@ -101,7 +101,7 @@ function clearOpened(openedCards) {
 
 // Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
-     if (openedCards[0].classList === openedCards[1].classList) {
+     if (openedCards[0].firstElementChild.classList === openedCards[1].firstElementChild.classList) {
           makeMatch(openedCards);
      } else {
           clearOpened(openedCards);
@@ -110,8 +110,8 @@ function checkMatch(clickedCard) {
 
 // Adds the match class to 2 cards if they have matched, checks for all cards matched
 function makeMatch(openedCards) {
-	openedCards[1].classList.add('match');
-	openedCards[0].classList.add('match');
+	openedCards[1].firstElementChild.classList.add('match');
+	openedCards[0].firstElementChild.classList.add('match');
      matchCount += 1;
 	if (matchCount === 8) {
 		//end game: stop timer, pop-up with stats
