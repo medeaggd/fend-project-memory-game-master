@@ -62,7 +62,6 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
-     //deck.getElementsByTagName('li').firstChild.setAttribute('display', 'none');
 	// Initialize clock
 };
 
@@ -102,7 +101,7 @@ function clearOpened(openedCards) {
 
 // Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
-     if (openedCards[0].firstElementChild.classList === openedCards[1].firstElementChild.classList) {
+     if (openedCards[0].classList === openedCards[1].classList) {
           makeMatch(openedCards);
      } else {
           clearOpened(openedCards);
