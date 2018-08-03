@@ -8,6 +8,7 @@ const cardList = [
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star"
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
+const cards = document.getElementsByClass('card');
 const newBoard = document.getElementsByClass('restart').firstChild; // Targets the New Board/reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
@@ -24,6 +25,19 @@ let trueCardArr = []; // Creates array to hold generated html text
 // Readies the game to start when the page is loaded
 window.onload = function() {
  	startGame();
+     // Base listener function on deck to flip cards and check matches
+     deck.addEventListener('click', function(evt) {
+           let clickedCard = evt.target;
+           if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
+                toggleCardDisplay(clickedCard);
+                openedCards.push(clickedCard);
+                     if (openedCards.length === 2) {
+                          checkMatch();
+                     }
+                //Adds 1 to the move counter each time a card is clicked
+      		moveCount += 1;
+           }
+     });
 };
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -76,20 +90,6 @@ function startGame() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-// Base listener function on deck to flip cards and check matches
-deck.addEventListener('click', function(evt) {
-      let clickedCard = evt.target;
-      if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
-           toggleCardDisplay(clickedCard);
-           openedCards.push(clickedCard);
-                if (openedCards.length === 2) {
-                     checkMatch();
-                }
-           //Adds 1 to the move counter each time a card is clicked
- 		moveCount += 1;
-      }
-});
-
 function toggleCardDisplay(trgt) {
      trgt.classList.toggle('open', 'show');
 };
@@ -107,6 +107,7 @@ function clearOpened(openedCards) {
 function checkMatch(clickedCard) {
      if (openedCards[0].firstElementChild.classList === openedCards[1].firstElementChild.classList) {
           makeMatch(openedCards);
+          toggledCards = [];
      } else {
           clearOpened(openedCards);
      };
