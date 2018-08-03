@@ -76,8 +76,8 @@ function startGame() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- // Base listener function on deck to flip cards and check matches
- deck.addEventListener('click', function(evt) {
+// Base listener function on deck to flip cards and check matches
+deck.addEventListener('click', function(evt) {
       let clickedCard = evt.target;
       if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
            toggleCardDisplay(clickedCard);
@@ -88,13 +88,17 @@ function startGame() {
            //Adds 1 to the move counter each time a card is clicked
  		moveCount += 1;
       }
- });
+});
 
- // For non-matches, clears classes from opened cards and resets the array
+function toggleCardDisplay(trgt) {
+     trgt.classList.toggle('open', 'show');
+};
+
+
+// For non-matches, clears classes from opened cards and resets the array
 function clearOpened(openedCards) {
      for (let open of openedCards) {
-		open.classList.toggle('open');
-		open.classList.toggle('show');
+		open.classList.toggle('open', 'show');
           openedCards = [];
 	}
 };
