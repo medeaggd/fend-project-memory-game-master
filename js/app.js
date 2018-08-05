@@ -105,14 +105,23 @@ function clearOpened(openedCards) {
 
 // Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
-     if (openedCards[0].firstElementChild.classList === openedCards[1].firstElementChild.classList) {
-          makeMatch(openedCards);
+     if (isCardClickable(clickedCard) == true);
           toggledCards = [];
 	} else {
           setTimeout (function () {
 			clearOpened(openedCards);
 		}, 1000);
      };
+};
+
+// Moved criteria for clicked card into separate function, as the list was getting long.
+function isCardClickable(clickedCard) {
+	return (
+		clickedCard.classList.contains('card') &&
+		!clickedCard.classList.contains('match') &&
+		!openededCards.contains(clickedCard) &&
+		openedCards.length < 2
+	);
 };
 
 // Adds the match class to 2 cards if they have matched, checks for all cards matched
