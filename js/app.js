@@ -108,8 +108,10 @@ function checkMatch(clickedCard) {
      if (openedCards[0].firstElementChild.classList === openedCards[1].firstElementChild.classList) {
           makeMatch(openedCards);
           toggledCards = [];
-     } else {
-          clearOpened(openedCards);
+	} else {
+          setTimeout (function () {
+			clearOpened(openedCards);
+		}, 1000);
      };
 };
 
