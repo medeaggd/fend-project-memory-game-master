@@ -35,7 +35,7 @@ window.onload = function() {
                           checkMatch();
                      }
                 //Adds 1 to the move counter each time a card is clicked
-      		moveCount += 1;
+      		moveCount++;
            }
      });
 };
@@ -128,7 +128,7 @@ function isCardClickable(clickedCard) {
 function makeMatch(openedCards) {
 	openedCards[1].firstElementChild.classList.add('match');
 	openedCards[0].firstElementChild.classList.add('match');
-     matchCount += 1;
+     matchCount++;
 	if (matchCount === 8) {
 		//end game: stop timer, pop-up with stats
 	};
