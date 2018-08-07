@@ -106,6 +106,7 @@ function clearOpened(openedCards) {
 // Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
      if (isCardClickable(clickedCard) == true);
+          makeMatch();
           toggledCards = [];
 	} else {
           setTimeout (function () {
