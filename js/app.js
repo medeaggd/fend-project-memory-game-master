@@ -9,7 +9,7 @@ const cardList = [
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
 const cards = document.getElementsByClassName('card');
-const newBoard = document.getElementsByClassName('restart').firstChild; // Targets the New Board/reset button
+const restart = document.getElementsByClassName('restart').firstChild; // Targets the New Board/reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; //Creates a running counter for matches made in the game
@@ -136,7 +136,7 @@ function makeMatch(openedCards) {
 };
 
 // Resets the board when the "New Board" button is clicked
-newBoard.addEventListener('click', function() {
+restart.addEventListener('click', function() {
     //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
     openedCards = [];
     toggledCards = [];
