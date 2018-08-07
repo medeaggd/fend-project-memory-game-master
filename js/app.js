@@ -139,5 +139,8 @@ function makeMatch(openedCards) {
 newBoard.addEventListener('click', function() {
     //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
     openedCards = [];
+    toggledCards = [];
+    moveCount = 0;
+    matchCount = 0;
     startGame();
 });
