@@ -91,14 +91,16 @@ function startGame() {
  */
 
 function toggleCardDisplay(trgt) {
-     trgt.classList.toggle('open', 'show');
+     trgt.classList.toggle('open');
+     trgt.classList.toggle('show');
 };
 
 
 // For non-matches, clears classes from opened cards and resets the array
 function clearOpened(openedCards) {
      for (let open of openedCards) {
-		open.classList.toggle('open', 'show');
+		open.classList.toggle('open');
+          open.classList.toggle('show');
           openedCards = [];
 	}
 };
