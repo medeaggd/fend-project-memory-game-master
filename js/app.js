@@ -28,7 +28,7 @@ window.onload = function() {
      // Base listener function on deck to flip cards and check matches
      deck.addEventListener('click', function(evt) {
            let clickedCard = evt.target;
-           if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
+           if (isCardClickable(clickedCard) == true) {
                 toggleCardDisplay(clickedCard);
                 openedCards.push(clickedCard);
                      if (openedCards.length === 2) {
@@ -105,7 +105,7 @@ function clearOpened(openedCards) {
 
 // Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
-     if (isCardClickable(clickedCard) == true);
+     if (openedCards[0].classList === openedCards[1].classList);
           makeMatch();
           toggledCards = [];
 	} else {
