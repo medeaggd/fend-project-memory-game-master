@@ -104,8 +104,8 @@ function clearOpened(openedCards) {
 };
 
 // Check for match by comparing the src attribute of the 2 active cards
-function checkMatch(clickedCard) {
-     if (openedCards[0].classList === openedCards[1].classList);
+function checkMatch() {
+     if (openedCards[0].classList === openedCards[1].classList) {
           makeMatch();
           toggledCards = [];
 	} else {
@@ -120,7 +120,7 @@ function isCardClickable(clickedCard) {
 	return (
 		clickedCard.classList.contains('card') &&
 		!clickedCard.classList.contains('match') &&
-		!openededCards.contains(clickedCard) &&
+		//!openededCards.contains(clickedCard) &&
 		openedCards.length < 2
 	);
 };
