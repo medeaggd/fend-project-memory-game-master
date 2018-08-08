@@ -105,7 +105,7 @@ function clearOpened(openedCards) {
 	}
 };
 
-// Check for match by comparing the src attribute of the 2 active cards
+// Check for match by comparing the class list of the 2 active cards
 function checkMatch() {
      if (openedCards[0].classList === openedCards[1].classList) {
           makeMatch();
@@ -137,7 +137,7 @@ function makeMatch(openedCards) {
 	};
 };
 
-// Resets the board when the "New Board" button is clicked
+// Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
     //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
     openedCards = [];
