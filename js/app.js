@@ -8,7 +8,7 @@ const cardList = [
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star"
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
-const cards = document.getElementsByClassName('card');
+const cards = document.querySelectorAll('.card');
 const restart = document.getElementsByClassName('restart').firstChild; // Targets the New Board/reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
@@ -27,14 +27,14 @@ window.onload = function() {
  	startGame();
      // Base listener function on deck to flip cards and check matches
      deck.addEventListener('click', function(evt) {
-           let clickedCard = evt.target;
-           if (isCardClickable(clickedCard) == true) {
-                toggleCardDisplay(clickedCard);
-                openedCards.push(clickedCard);
+           if (isCardClickable(evt.target) == true) {
+               let clickedCard = evt.target;
+               toggleCardDisplay(clickedCard);
+               openedCards.push(clickedCard);
                      if (openedCards.length === 2) {
                           checkMatch();
-                     }
-                //Adds 1 to the move counter each time a card is clicked
+                     };
+               // Adds 1 to the move counter each time a card is clicked
       		moveCount++;
            }
      });
@@ -107,7 +107,8 @@ function clearOpened(openedCards) {
 
 // Check for match by comparing the class list of the 2 active cards
 function checkMatch() {
-     if (openedCards[0].classList === openedCards[1].classList) {
+     if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
+          console.log("We have a match!");
           makeMatch();
           toggledCards = [];
 	} else {
@@ -128,7 +129,7 @@ function isCardClickable(clickedCard) {
 };
 
 // Adds the match class to 2 cards if they have matched, checks for all cards matched
-function makeMatch(openedCards) {
+function makeMatch() {
 	openedCards[1].firstElementChild.classList.add('match');
 	openedCards[0].firstElementChild.classList.add('match');
      matchCount++;
