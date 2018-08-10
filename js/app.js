@@ -8,8 +8,8 @@ const cardList = [
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star"
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
-const moves = document.querySelector('.moves');
-const restart = document.getElementsByClassName('restart').firstChild; // Targets the New Board/reset button
+const moves = document.querySelector('.moves'); // Targets the moves counter
+const restart = document.getElementsByClassName('restart').firstChild; // Targets the reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; //Creates a running counter for matches made in the game
@@ -37,6 +37,12 @@ deck.addEventListener('click', function(evt) {
                      checkMatch();
                      addMove();
                 }
+                if (matchCount === 8) {
+                     setTimeout (function () {
+                         alert("Game over!");
+                         //end game: stop timer, pop-up with stats
+                    }, 500);
+                };
      }
 });
 
@@ -114,7 +120,7 @@ function checkMatch() {
 	} else {
           setTimeout (function () {
 			clearOpened();
-		}, 1000);
+		}, 750);
      };
 };
 
@@ -132,10 +138,7 @@ function isCardClickable(clickedCard) {
 function makeMatch() {
 	openedCards[1].classList.add('match');
 	openedCards[0].classList.add('match');
-/*     matchCount++;
-	if (matchCount === 8) {
-		//end game: stop timer, pop-up with stats
-	};*/
+     matchCount++;
 };
 
 // Adds 1 to the move counter each time a pair of cards are clicked
