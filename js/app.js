@@ -111,6 +111,7 @@ function checkMatch() {
      if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
           makeMatch();
           toggledCards = [];
+          clearOpened();
 	} else {
           setTimeout (function () {
 			clearOpened();
@@ -130,12 +131,12 @@ function isCardClickable(clickedCard) {
 
 // Adds the match class to 2 cards if they have matched, checks for all cards matched
 function makeMatch() {
-	openedCards[1].firstElementChild.classList.add('match');
-	openedCards[0].firstElementChild.classList.add('match');
-     matchCount++;
+	openedCards[1].classList.add('match');
+	openedCards[0].classList.add('match');
+/*     matchCount++;
 	if (matchCount === 8) {
 		//end game: stop timer, pop-up with stats
-	};
+	};*/
 };
 /*
 // Resets the board when the Restart arrow is clicked
