@@ -25,20 +25,21 @@ let trueCardArr = []; // Creates array to hold generated html text
 // Readies the game to start when the page is loaded
 window.onload = function() {
  	startGame();
-     // Base listener function on deck to flip cards and check matches
-     deck.addEventListener('click', function(evt) {
-           if (isCardClickable(evt.target) == true) {
-               let clickedCard = evt.target;
-               toggleCardDisplay(clickedCard);
-               openedCards.push(clickedCard);
-                     if (openedCards.length === 2) {
-                          checkMatch();
-                     };
-               // Adds 1 to the move counter each time a card is clicked
-      		moveCount++;
-           }
-     });
 };
+
+// Base listener function on deck to flip cards and check matches
+deck.addEventListener('click', function(evt) {
+      if (isCardClickable(evt.target) == true) {
+          let clickedCard = evt.target;
+          toggleCardDisplay(clickedCard);
+          openedCards.push(clickedCard);
+                if (openedCards.length === 2) {
+                     checkMatch();
+                }
+          // Adds 1 to the move counter each time a card is clicked
+          moveCount++;
+     }
+});
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -108,7 +109,6 @@ function clearOpened(openedCards) {
 // Check for match by comparing the class list of the 2 active cards
 function checkMatch() {
      if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
-          console.log("We have a match!");
           makeMatch();
           toggledCards = [];
 	} else {
@@ -137,7 +137,7 @@ function makeMatch() {
 		//end game: stop timer, pop-up with stats
 	};
 };
-
+/*
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
     //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
@@ -147,3 +147,4 @@ restart.addEventListener('click', function() {
     matchCount = 0;
     startGame();
 });
+*/
