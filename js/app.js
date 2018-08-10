@@ -98,7 +98,7 @@ function toggleCardDisplay(trgt) {
 
 
 // For non-matches, clears classes from opened cards and resets the array
-function clearOpened(openedCards) {
+function clearOpened() {
      for (let open of openedCards) {
 		open.classList.toggle('open');
           open.classList.toggle('show');
@@ -113,7 +113,7 @@ function checkMatch() {
           toggledCards = [];
 	} else {
           setTimeout (function () {
-			clearOpened(openedCards);
+			clearOpened();
 		}, 1000);
      };
 };
