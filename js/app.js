@@ -36,6 +36,7 @@ deck.addEventListener('click', function(evt) {
                 if (openedCards.length === 2) {
                      checkMatch();
                      addMove();
+                     checkMoves();
                 }
                 if (matchCount === 8) {
                      setTimeout (function () {
@@ -147,6 +148,24 @@ function addMove() {
      moves.innerHTML = moveCount;
 };
 
+function checkMoves() {
+     if (moveCount == 16 || moveCount == 24) {
+          hideStar();
+     }
+}
+
+function hideStar() {
+     switch (moveCount) {
+          case 16:
+               document.querySelector('.stars li').firstElementChild.style = 'regular';
+               break;
+          case 24:
+               document.querySelector('.stars li:nthChild(2)').style = 'regular';
+               break;
+          default:
+               document.querySelectorAll('.stars li').style = 'solid';
+     }
+}
 
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
