@@ -163,7 +163,7 @@ function hideStar() {
                document.querySelector('.stars li:nthChild(2)').style = 'regular';
                break;
           default:
-               document.querySelectorAll('.stars li').style = 'solid';
+               return;
      }
 }
 
@@ -174,8 +174,9 @@ restart.addEventListener('click', function() {
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
-          while (deck.firstElementChild) {
-               deck.removeChild(deck.firstElementChild);
+          let cardsLI = document.querySelectorAll('#deck li')
+          if (cardsLI) {
+               cardsLI.innerHTML.remove();
           }
           startGame();
      } else {
