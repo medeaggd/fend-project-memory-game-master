@@ -149,24 +149,21 @@ function addMove() {
 };
 
 function checkMoves() {
-     if (moveCount == 16 || moveCount == 24) {
+     if (moveCount === 16 || moveCount === 24 || moveCount === 30) {
           hideStar();
      }
-}
+};
 
 function hideStar() {
-     switch (moveCount) {
-          case 16:
-               document.querySelector('.stars li').firstElementChild.style = 'regular';
+     const stars = document.querySelectorAll('.stars li');
+     for (star of stars) {
+          if (star.style.display !== 'none') {
+               star.style.display = 'none';
                break;
-          case 24:
-               document.querySelector('.stars li:nthChild(2)').style = 'regular';
-               break;
-          default:
-               return;
+          }
      }
-}
-
+};
+/*
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
      if (window.confirm('Are you sure you want to restart the game?')) {
@@ -174,12 +171,9 @@ restart.addEventListener('click', function() {
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
-          let cardsLI = document.querySelectorAll('#deck li')
-          if (cardsLI) {
-               cardsLI.innerHTML.remove();
-          }
+          deck.innerHTML.remove();
           startGame();
      } else {
           return;
      }
-});
+});*/
