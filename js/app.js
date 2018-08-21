@@ -12,8 +12,12 @@ const moves = document.querySelector('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
-let matchCount = 0; //Creates a running counter for matches made in the game
+let matchCount = 0; // Creates a running counter for matches made in the game
 let trueCardArr = []; // Creates array to hold generated html text
+const clock = document.querySelector('.clock'); // Targets the clock element
+let realTime = 0; // Time on the clock
+let clockOff = true; // Boolean to check if clock is ticking or not
+let clockWork; // Placeholder for the clock functionality
 
 /*
  * Display the cards on the page
@@ -26,26 +30,6 @@ let trueCardArr = []; // Creates array to hold generated html text
 window.onload = function() {
  	startGame();
 };
-
-// Base listener function on deck to flip cards and check matches
-deck.addEventListener('click', function(evt) {
-      if (isCardClickable(evt.target) == true) {
-          let clickedCard = evt.target;
-          toggleCardDisplay(clickedCard);
-          openedCards.push(clickedCard);
-                if (openedCards.length === 2) {
-                     checkMatch();
-                     addMove();
-                     checkMoves();
-                }
-                if (matchCount === 8) {
-                     setTimeout (function () {
-                         alert("Game over!");
-                         //end game: stop timer, pop-up with stats
-                    }, 500);
-                };
-     }
-});
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -97,6 +81,26 @@ function startGame() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ // Base listener function on deck to flip cards and check matches
+ deck.addEventListener('click', function(evt) {
+       if (isCardClickable(evt.target) == true) {
+           let clickedCard = evt.target;
+           toggleCardDisplay(clickedCard);
+           openedCards.push(clickedCard);
+                 if (openedCards.length === 2) {
+                      checkMatch();
+                      addMove();
+                      checkMoves();
+                 }
+                 if (matchCount === 8) {
+                      setTimeout (function () {
+                          alert("Game over!");
+                          //end game: stop timer, pop-up with stats
+                     }, 500);
+                 };
+      }
+ });
+ 
 function toggleCardDisplay(trgt) {
      trgt.classList.toggle('open');
      trgt.classList.toggle('show');
