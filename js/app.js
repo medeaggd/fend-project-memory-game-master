@@ -15,7 +15,7 @@ let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; // Creates a running counter for matches made in the game
 let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
-let realTime = 0; // Time on the clock
+let realTime; // Time on the clock
 let clockOff = true; // Boolean to check if clock is ticking or not
 let clockWork; // Placeholder for the clock functionality
 
@@ -98,9 +98,9 @@ function startGame() {
                           //end game: stop timer, pop-up with stats
                      }, 500);
                  };
-      }
+      };
  });
- 
+
 function toggleCardDisplay(trgt) {
      trgt.classList.toggle('open');
      trgt.classList.toggle('show');
@@ -155,7 +155,7 @@ function addMove() {
 function checkMoves() {
      if (moveCount === 16 || moveCount === 24 || moveCount === 30) {
           hideStar();
-     }
+     };
 };
 
 function hideStar() {
@@ -164,8 +164,17 @@ function hideStar() {
           if (star.style.display !== 'none') {
                star.style.display = 'none';
                break;
-          }
-     }
+          };
+     };
+};
+
+function startClock() {
+     if (clockOff = false) {
+          realTime = 0;
+          setInterval(function () {
+               realTime++;
+          }, 1000);
+     };
 };
 /*
 // Resets the board when the Restart arrow is clicked
