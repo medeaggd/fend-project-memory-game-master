@@ -17,7 +17,8 @@ let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
 let realTime; // Time on the clock
 let clockOff = true; // Boolean to check if clock is ticking or not
-let clockWork; // Placeholder for the clock functionality
+const minutes = Math.floor(realTime / 60);
+const seconds = realTime % 60;
 
 /*
  * Display the cards on the page
@@ -168,6 +169,7 @@ function hideStar() {
      };
 };
 
+// Function for starting the clock, making time increase by 1s intervals
 function startClock() {
      if (clockOff = false) {
           realTime = 0;
@@ -175,6 +177,11 @@ function startClock() {
                realTime++;
           }, 1000);
      };
+};
+
+// Function to display the time counter on the page inside the clock span tag
+function displayTime() {
+     clockID.innerHTML = realTime;
 };
 /*
 // Resets the board when the Restart arrow is clicked
