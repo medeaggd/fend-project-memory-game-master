@@ -15,7 +15,7 @@ let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; // Creates a running counter for matches made in the game
 let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
-let realTime; // Time on the clock
+let realTime = 0; // Time on the clock
 let clockOff = true; // Boolean to check if clock is ticking or not
 let minutes = Math.floor(realTime / 60);
 let seconds = realTime % 60;
@@ -185,8 +185,7 @@ function hideStar() {
 
 // Function for starting the clock, making time increase by 1s intervals
 function startClock() {
-     if (clockOff = false) {
-          realTime = 0;
+     while (clockOff = false) {
           setInterval(function() {
                realTime++;
           }, 1000);
