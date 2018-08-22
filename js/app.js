@@ -68,7 +68,8 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
-	// Initialize clock
+     startClock():
+     displayTime();
 };
 
 /*
@@ -181,7 +182,11 @@ function startClock() {
 
 // Function to display the time counter on the page inside the clock span tag
 function displayTime() {
-     clockID.innerHTML = realTime;
+     if (seconds < 10) {
+          clock.innerHTML = `${minutes}:0${seconds}`;
+     } else {
+          clock.innerHTML = `${minutes}:${seconds}`;
+     };
 };
 /*
 // Resets the board when the Restart arrow is clicked
