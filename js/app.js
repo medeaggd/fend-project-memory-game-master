@@ -63,12 +63,14 @@ function createGameBoard() {
 
 // Initial load of cards after page loads
 function startGame() {
-     checkStart();
      cardList.forEach(function(card) {
           trueCardArr.push(createCardList(card));
      });
      shuffle(trueCardArr);
 	createGameBoard();
+     setTimeout(function() {
+          checkStart();
+     }, 500);
 };
 
 // Keeping the clock off until confirmation of game beginning
