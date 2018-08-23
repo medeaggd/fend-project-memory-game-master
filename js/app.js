@@ -211,7 +211,7 @@ function calculateTime() {
                return realTime;
           };
      };
-}
+};
 /*
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
