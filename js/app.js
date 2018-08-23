@@ -17,8 +17,7 @@ let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
 let realTime = 0; // Time on the clock
 let clockOff = true; // Boolean to check if clock is ticking or not
-let minutes = Math.floor(realTime / 60);
-let seconds = realTime % 60;
+let minutes, seconds; // Create variables for time components
 
 /*
  * Display the cards on the page
@@ -78,7 +77,6 @@ function checkStart() {
      if (window.confirm(`Are you ready to begin the game?`)) {
           clockOff = false;
           startClock();
-          displayTime();
      } else {
           alert(`You must start the clock to begin the game!`);
           checkStart();
@@ -189,6 +187,8 @@ function startClock() {
           setInterval(function() {
                realTime++;
           }, 1000);
+     calculateTime();
+     displayTime();
      };
 };
 
@@ -200,6 +200,18 @@ function displayTime() {
           clock.innerHTML = `${minutes}:${seconds}`;
      };
 };
+
+// Function to increase minutes when seconds get over 60
+function calculateTime() {
+     seconds = function() {
+          if (realTime = 60) {
+               minutes++;
+               return realTime / 60;
+          } else {
+               return realTime;
+          };
+     };
+}
 /*
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
@@ -209,6 +221,7 @@ restart.addEventListener('click', function() {
           moveCount = 0;
           matchCount = 0;
           deck.innerHTML.remove();
+          realTime = 0;
           startGame();
      } else {
           return;
