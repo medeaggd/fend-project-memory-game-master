@@ -203,15 +203,18 @@ function displayTime() {
 /*
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
+     clockOff = true;
      if (window.confirm('Are you sure you want to restart the game?')) {
           openedCards = [];
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
           deck.innerHTML.remove();
-          realTime = 0;
+          seconds = 0;
+          minutes = 0;
           startGame();
      } else {
+          clockOff = false;
           return;
      }
 });*/
