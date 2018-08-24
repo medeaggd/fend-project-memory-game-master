@@ -66,6 +66,7 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
+     displayTime();
      setTimeout(function() {
           checkStart();
      }, 500);
@@ -182,20 +183,17 @@ function hideStar() {
 
 // Function for starting the clock, making time increase by 1s intervals
 function startClock() {
-     while (clockOff === false) {
-          setInterval(function() {
-               displayTime();
-          }, 1000);
-     };
+     setInterval(function() {
+          seconds++;
+     }, 1000);
 };
 
 // Function to calculate minutes from seconds and display the time counter inside the clock span tag
 function displayTime() {
-     seconds++;
      if (seconds > 59) {
           minutes++;
           seconds = 0;
-     }
+     };
      if (seconds < 10) {
           clock.innerHTML = `${minutes}:0${seconds}`;
      } else {
