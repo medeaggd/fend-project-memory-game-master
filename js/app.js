@@ -66,7 +66,6 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
-     displayTime();
      setTimeout(function() {
           checkStart();
      }, 500);
@@ -185,6 +184,7 @@ function hideStar() {
 function startClock() {
      setInterval(function() {
           seconds++;
+          displayTime();
      }, 1000);
 };
 
