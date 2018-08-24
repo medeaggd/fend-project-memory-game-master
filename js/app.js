@@ -192,7 +192,7 @@ function startClock() {
 // Function to calculate minutes from seconds and display the time counter inside the clock span tag
 function displayTime() {
      seconds++;
-     if (realTime > 59) {
+     if (seconds > 59) {
           minutes++;
           seconds = 0;
      }
