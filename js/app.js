@@ -200,7 +200,7 @@ function displayTime() {
           clock.innerHTML = `${minutes}:${seconds}`;
      };
 };
-/*
+
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
      clockOff = true;
@@ -209,12 +209,12 @@ restart.addEventListener('click', function() {
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
-          deck.innerHTML.remove();
+          deck.innerHTML = "";
           seconds = 0;
           minutes = 0;
           startGame();
      } else {
           clockOff = false;
           return;
-     }
-});*/
+     };
+});
