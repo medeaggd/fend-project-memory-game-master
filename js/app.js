@@ -16,6 +16,7 @@ let matchCount = 0; // Creates a running counter for matches made in the game
 let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
 let clockOff = true; // Boolean to check if clock is ticking or not
+let restartConfirm = false; // Boolean to check if okay to restart game
 let minutes = 0, seconds = 0; // Placeholders for time counters
 
 /*
@@ -204,12 +205,18 @@ function displayTime() {
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
      clockOff = true;
-     if (window.confirm('Are you sure you want to restart the game?')) {
+     restartConfirm = window.confirm('Are you sure you want to restart the game?');
+     reset();
+});
+
+function reset() {
+     if (restartConfirm === true) {
           openedCards = [];
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
-          deck.innerHTML = "";
+          deck.innerHTML = '';
+          moves.innerHTML = '';
           seconds = 0;
           minutes = 0;
           startGame();
@@ -217,4 +224,4 @@ restart.addEventListener('click', function() {
           clockOff = false;
           return;
      };
-});
+};
