@@ -15,6 +15,7 @@ let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; // Creates a running counter for matches made in the game
 let trueCardArr = []; // Creates array to hold generated html text
 const clock = document.querySelector('.clock'); // Targets the clock element
+let clockTick; // Targets the Interval function ("ticking" of the clock)
 let clockOff = true; // Boolean to check if clock is ticking or not
 let restartConfirm = false; // Boolean to check if okay to restart game
 let minutes = 0, seconds = 0; // Placeholders for time counters
@@ -183,7 +184,7 @@ function hideStar() {
 
 // Function for starting the clock, making time increase by 1s intervals
 function startClock() {
-     setInterval(function() {
+     clockTick = setInterval(function() {
           seconds++;
           displayTime();
      }, 1000);
@@ -211,6 +212,7 @@ restart.addEventListener('click', function() {
 
 function reset() {
      if (restartConfirm === true) {
+          clearInterval(clockTick);
           openedCards = [];
           toggledCards = [];
           moveCount = 0;
