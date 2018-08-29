@@ -8,6 +8,7 @@ const cardList = [
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star"
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
+const stars = document.querySelectorAll('.stars li'); // Targets the list of stars
 const moves = document.querySelector('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
@@ -172,8 +173,8 @@ function checkMoves() {
      };
 };
 
+// Hides 1 star at a time
 function hideStar() {
-     const stars = document.querySelectorAll('.stars li');
      for (star of stars) {
           if (star.style.display !== 'none') {
                star.style.display = 'none';
@@ -181,6 +182,13 @@ function hideStar() {
           };
      };
 };
+
+// Displays all the stars when the game resets
+function resetStars() {
+     for (star of stars) {
+          star.style.display = 'inline';
+     };
+}
 
 // Function for starting the clock, making time increase by 1s intervals
 function startClock() {
@@ -213,12 +221,13 @@ restart.addEventListener('click', function() {
 function reset() {
      if (restartConfirm === true) {
           clearInterval(clockTick);
+          resetStars();
           openedCards = [];
           toggledCards = [];
           moveCount = 0;
           matchCount = 0;
           deck.innerHTML = '';
-          moves.innerHTML = '';
+          moves.innerHTML = '0';
           seconds = 0;
           minutes = 0;
           startGame();
