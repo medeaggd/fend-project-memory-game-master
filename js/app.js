@@ -224,6 +224,7 @@ function reset() {
           resetStars();
           openedCards = [];
           toggledCards = [];
+          trueCardArr = [];
           moveCount = 0;
           matchCount = 0;
           deck.innerHTML = '';
