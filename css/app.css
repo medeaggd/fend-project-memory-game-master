@@ -112,3 +112,24 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * End of Game Modal
+ */
+.modal_background {
+     position: absolute;
+     top: 20px;
+     left: 20px;
+     height: calc(100% - 40px);
+     width: calc(100% - 40px);
+     background: rgba(0, 0, 0, .5);
+}
+
+.modal_body {
+     position: relative;
+     height: 200px;
+     width: 200px;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -70%);
+}
