@@ -9,8 +9,9 @@ const cardList = [
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
 const stars = document.querySelectorAll('.stars li'); // Targets the list of stars
-const moves = document.querySelector('.moves'); // Targets the moves counter
+const moves = document.querySelectorAll('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
+const modal = document.querySelector('.modal_background'); // Targets the end-of-game modal
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; // Creates a running counter for matches made in the game
@@ -64,6 +65,8 @@ function createGameBoard() {
 
 // Initial load of cards after page loads
 function startGame() {
+     document.querySelectorAll('.modal_background').display = 'none';
+     document.querySelectorAll('.modal_body').display = 'none';
      cardList.forEach(function(card) {
           trueCardArr.push(createCardList(card));
      });
@@ -108,10 +111,11 @@ function checkStart() {
                       checkMoves();
                  }
                  if (matchCount === 8) {
+                      clockOff = true;
                       setTimeout (function () {
-                          alert("Game over!");
-                          //end game: stop timer, pop-up with stats
-                     }, 500);
+                           document.querySelectorAll('.modal_background').display = 'block';
+                           document.querySelectorAll('.modal_body').display = 'block';
+                     }, 250);
                  };
       };
  });
