@@ -117,12 +117,15 @@ h1 {
  * End of Game Modal
  */
 .modal_background {
-     position: absolute;
+     display: none;
+     position: fixed;
+     z-index: 1;
      top: 20px;
      left: 20px;
      height: calc(100% - 40px);
      width: calc(100% - 40px);
-     background: rgba(0, 0, 0, .5);
+     overflow: auto;
+     background-color: rgba(0, 0, 0, .5);
 }
 
 .modal_body {
