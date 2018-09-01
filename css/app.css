@@ -125,14 +125,28 @@ h1 {
      height: calc(100% - 40px);
      width: calc(100% - 40px);
      overflow: auto;
-     background-color: rgba(0, 0, 0, .5);
+     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal_body {
+     background-image: url('../img/treasure-chest2.png');
      position: relative;
      height: 200px;
      width: 200px;
      top: 50%;
      left: 50%;
      transform: translate(-50%, -70%);
+}
+
+.close {
+     color: #aaa;
+     float: right;
+     font-size: 28px;
+     font-weight: bold;
+}
+
+.close:hover, .close:focus {
+     color: #000;
+     text-decoration: none;
+     cursor: pointer;
 }
