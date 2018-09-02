@@ -11,7 +11,11 @@ const deck = document.getElementById('deck'); // Targets the ul list that will h
 const stars = document.querySelectorAll('.stars li'); // Targets the list of stars
 const moves = document.querySelectorAll('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
-const modal = document.querySelector('.modal_background'); // Targets the end-of-game modal
+const modalBG = document.querySelector('.modal_background'); // Targets the end-of-game modal background
+const modal = document.querySelector('.modal_body'); // Targets the end-of-game modal content box
+const statClock = document.querySelector('.stat_clock');
+const statMoves = document.querySelector('.stat_moves');
+const statStars = document.querySelector('.stat_stars');
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
 let matchCount = 0; // Creates a running counter for matches made in the game
@@ -65,7 +69,8 @@ function createGameBoard() {
 
 // Initial load of cards after page loads
 function startGame() {
-     modal.display = 'none';
+     modalBG.style.display = 'none';
+     modal.style.display = 'none';
      cardList.forEach(function(card) {
           trueCardArr.push(createCardList(card));
      });
@@ -108,11 +113,16 @@ function checkStart() {
                       checkMatch();
                       addMove();
                       checkMoves();
-                 }
+                 };
                  if (matchCount === 8) {
                       clockOff = true;
+                      clearInterval(clockTick);
                       setTimeout (function () {
-                           modal.display = 'block';
+                           modalBG.style.display = 'block';
+                           modal.style.display = 'block';
+                           statStars.innerHTML = stars.innerHTML;
+                           statMoves.innerHTML = moves.innerHTML;
+                           statClock.innerHTML = clock.innerHTML;
                      }, 250);
                  };
       };
@@ -208,8 +218,10 @@ function displayTime() {
      };
      if (seconds < 10) {
           clock.innerHTML = `${minutes}:0${seconds}`;
+          statClock.innerHTML = `${minutes}:0${seconds}`;
      } else {
           clock.innerHTML = `${minutes}:${seconds}`;
+          statClock.innerHTML = `${minutes}:${seconds}`;
      };
 };
 

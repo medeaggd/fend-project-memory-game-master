@@ -133,11 +133,22 @@ h1 {
      background-image: url('../img/treasure-chest2.png');
      display: none;
      position: relative;
-     height: 200px;
-     width: 200px;
+     height: 550px;
+     width: 600px;
+     padding: 0 40px 0 0;
      top: 50%;
      left: 50%;
-     /*transform: translate(-50%, -70%);*/
+     transform: translate(-50%, -50%);
+}
+
+.modal_body .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.modal_body .stat_clock {
+     display: inline-block;
+     margin: 0;
 }
 
 .close {
