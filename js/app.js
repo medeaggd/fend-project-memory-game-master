@@ -65,8 +65,7 @@ function createGameBoard() {
 
 // Initial load of cards after page loads
 function startGame() {
-     document.querySelectorAll('.modal_background').display = 'none';
-     document.querySelectorAll('.modal_body').display = 'none';
+     modal.display = 'none';
      cardList.forEach(function(card) {
           trueCardArr.push(createCardList(card));
      });
@@ -113,8 +112,7 @@ function checkStart() {
                  if (matchCount === 8) {
                       clockOff = true;
                       setTimeout (function () {
-                           document.querySelectorAll('.modal_background').display = 'block';
-                           document.querySelectorAll('.modal_body').display = 'block';
+                           modal.display = 'block';
                      }, 250);
                  };
       };
@@ -153,7 +151,7 @@ function isCardClickable(clickedCard) {
 	return (
 		clickedCard.classList.contains('card') &&
 		!clickedCard.classList.contains('match') &&
-		//!openededCards.contains(clickedCard) &&
+		!clickedCard.classList.contains('open') &&
 		openedCards.length < 2
 	);
 };
