@@ -121,7 +121,7 @@ function checkStart() {
                       setTimeout (function () {
                            modalBG.style.display = 'block';
                            modal.style.display = 'block';
-                           statStars.innerHTML = stars.innerHTML;
+                           endStars();
                            statMoves.innerHTML = moves.innerHTML;
                            statClock.innerHTML = clock.innerHTML;
                      }, 250);
@@ -201,7 +201,20 @@ function resetStars() {
      for (star of stars) {
           star.style.display = 'inline';
      };
-}
+};
+
+// If statements to determine stars at the end of the game in the modal
+function endStars() {
+     if (moveCount >= 30) {
+          statStars.innerHTML = '0';
+     } else if (moveCount >= 24 && moveCount <= 29) {
+          statStars.innerHTML = '<li><i class="fa fa-star"></i></li>';
+     } else if (moveCount >= 16 && moveCount <= 23) {
+          statStars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+     } else if (moveCount <= 15) {
+          statStars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+     }
+};
 
 // Function for starting the clock, making time increase by 1s intervals
 function startClock() {
