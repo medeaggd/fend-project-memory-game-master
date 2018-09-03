@@ -13,6 +13,7 @@ const moves = document.querySelector('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
 const modalBG = document.querySelector('.modal_background'); // Targets the end-of-game modal background
 const modal = document.querySelector('.modal_body'); // Targets the end-of-game modal content box
+const close = document.querySelector('.close'); // Targets the modal box's exit button (x)
 const statClock = document.querySelector('.stat_clock');
 const statMoves = document.querySelector('.stat_moves');
 const statStars = document.querySelector('.stat_stars');
@@ -224,6 +225,17 @@ function displayTime() {
           statClock.innerHTML = `${minutes}:${seconds}`;
      };
 };
+
+// 2 Functions to close the end-of-game modal box
+close.addEventListener('click', function() {
+     modalBG.style.display = 'none';
+     modal.style.display = 'none';
+});
+
+window.addEventListener('click', function() {
+     modalBG.style.display = 'none';
+     modal.style.display = 'none';
+});
 
 // Resets the board when the Restart arrow is clicked
 restart.addEventListener('click', function() {
