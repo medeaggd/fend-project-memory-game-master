@@ -9,7 +9,7 @@ const cardList = [
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
 const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
 const stars = document.querySelectorAll('.stars li'); // Targets the list of stars
-const moves = document.querySelectorAll('.moves'); // Targets the moves counter
+const moves = document.querySelector('.moves'); // Targets the moves counter
 const restart = document.getElementById('restart'); // Targets the reset button
 const modalBG = document.querySelector('.modal_background'); // Targets the end-of-game modal background
 const modal = document.querySelector('.modal_body'); // Targets the end-of-game modal content box
