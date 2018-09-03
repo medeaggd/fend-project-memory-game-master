@@ -213,7 +213,7 @@ function endStars() {
           statStars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
      } else if (moveCount <= 15) {
           statStars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
-     }
+     };
 };
 
 // Function for starting the clock, making time increase by 1s intervals
