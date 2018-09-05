@@ -1,31 +1,35 @@
 /*
  * Create a list that holds all of your cards
  */
+
 const cardList = [
      "fa-bomb", "fa-flask", "fa-fort-awesome", "fa-gamepad",
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star",
      "fa-bomb", "fa-flask", "fa-fort-awesome", "fa-gamepad",
      "fa-heart", "fa-rebel", "fa-rocket", "fa-star"
 ]; // Creates array with all of my cards (listed twice so that they have pairs)
-const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
-const stars = document.querySelectorAll('.stars li'); // Targets the list of stars
-const moves = document.querySelector('.moves'); // Targets the moves counter
-const restart = document.getElementById('restart'); // Targets the reset button
-const modalBG = document.querySelector('.modal_background'); // Targets the end-of-game modal background
-const modal = document.querySelector('.modal_body'); // Targets the end-of-game modal content box
+
+// Variable Declarations
+const clock = document.querySelector('.clock'); // Targets the clock element in the score panel
 const close = document.querySelector('.close'); // Targets the modal box's exit button (x)
-const statClock = document.querySelector('.stat_clock');
-const statMoves = document.querySelector('.stat_moves');
-const statStars = document.querySelector('.stat_stars');
-let openedCards = []; // Creates an open array for cards to be placed to compare matches
-let moveCount = 0; // Creates a running counter for moves made in the game
-let matchCount = 0; // Creates a running counter for matches made in the game
-let trueCardArr = []; // Creates array to hold generated html text
-const clock = document.querySelector('.clock'); // Targets the clock element
-let clockTick; // Targets the Interval function ("ticking" of the clock)
+const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
+const modal = document.querySelector('.modal_body'); // Targets the end-of-game modal content box
+const modalBG = document.querySelector('.modal_background'); // Targets the end-of-game modal background
+const moves = document.querySelector('.moves'); // Targets the moves counter in the score panel
+const restart = document.getElementById('restart'); // Targets the reset button
+const stars = document.querySelectorAll('.stars li'); // Targets the list of stars in the score panel
+const statClock = document.querySelector('.stat_clock'); // Targets clock in end-of-game modal
+const statMoves = document.querySelector('.stat_moves'); // Targets moves in end-of-game modal
+const statStars = document.querySelector('.stat_stars'); // Targets stars in end-of-game modal
 let clockOff = true; // Boolean to check if clock is ticking or not
-let restartConfirm = false; // Boolean to check if okay to restart game
+let clockTick; // Targets the Interval function ("ticking" of the clock)
+let matchCount = 0; // Creates a running counter for matches made in the game
 let minutes = 0, seconds = 0; // Placeholders for time counters
+let moveCount = 0; // Creates a running counter for moves made in the game
+let openedCards = []; // Creates an open array for cards to be placed to compare matches
+let restartConfirm = false; // Boolean to check if okay to restart game
+let trueCardArr = []; // Creates array to hold generated html text
+
 
 /*
  * Display the cards on the page
@@ -91,7 +95,7 @@ function checkStart() {
           alert(`You must start the clock to begin the game!`);
           checkStart();
      };
-}
+};
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -104,8 +108,8 @@ function checkStart() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- // Base listener function on deck to flip cards and check matches
- deck.addEventListener('click', function(evt) {
+// Base listener function on deck to flip cards and check matches
+deck.addEventListener('click', function(evt) {
        if (isCardClickable(evt.target) == true) {
            let clickedCard = evt.target;
            toggleCardDisplay(clickedCard);
@@ -127,7 +131,7 @@ function checkStart() {
                      }, 250);
                  };
       };
- });
+});
 
 function toggleCardDisplay(trgt) {
      trgt.classList.toggle('open');
@@ -141,7 +145,7 @@ function clearOpened() {
 		open.classList.toggle('open');
           open.classList.toggle('show');
           openedCards = [];
-	}
+	};
 };
 
 // Check for match by comparing the class list of the 2 active cards
@@ -180,6 +184,7 @@ function addMove() {
      moves.innerHTML = moveCount;
 };
 
+// Checks the number of moves in order to reduce star rating when benchmarks reached
 function checkMoves() {
      if (moveCount === 16 || moveCount === 24 || moveCount === 30) {
           hideStar();

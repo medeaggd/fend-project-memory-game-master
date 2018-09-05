@@ -17,7 +17,8 @@ body {
 }
 
 body {
-    background: #fff url('../img/grey-square-pattern-background-vector-illustration.jpg'); /* Background vector created by Davidzydd from Freepik.com */
+    /* Background vector created by Davidzydd from Freepik.com */
+    background: #fff url('../img/grey-square-pattern-background-vector-illustration.jpg');
     font-family: 'Coda', cursive;
 }
 
@@ -114,8 +115,9 @@ h1, h2 {
 }
 
 /*
- * End of Game Modal
+ * Styles for End of Game Modal
  */
+
 .modal_background {
      display: none;
      position: fixed;
